@@ -12,6 +12,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useToast,
+  Select,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Button } from "@chakra-ui/button";
@@ -103,11 +104,18 @@ const NewPatientModal = ({ fetchPatients }) => {
               />
             </FormControl>
             <FormControl>
-              <Input
+              <Select
+                placeholder="Select sex"
+                onChange={(e) => setSex(e.target.value)}
+              >
+                <option value="F">F</option>
+                <option value="M">M</option>
+              </Select>
+              {/* <Input
                 placeholder="Male/Female"
                 mb={1}
                 onChange={(e) => setSex(e.target.value)}
-              />
+              /> */}
             </FormControl>
             <FormControl>
               <Input

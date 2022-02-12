@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../redux/apiCalls";
 import NewPatientModal from "./NewPatientModal";
 import EditPatientModal from "./EditPatientModal";
+import PatientModal from "./PatientModal";
 
 // import GroupChatModal from "./GroupChatModal";
 
@@ -101,15 +102,8 @@ const ManagePatients = () => {
         {patients ? (
           <Stack overflowY="scroll">
             {patients.map((patient) => (
-              <EditPatientModal
-                prevSex={patient.sex}
-                prevFullName={patient.fullName}
-                prevAge={patient.age}
-                prevOperation={patient.operation}
-                id={patient.id}
-                fetchPatients={fetchPatients}
-              >
-                <Box
+              <PatientModal patient={patient} fetchPatients={fetchPatients}>
+                {/* <Box
                   // onClick={
 
                   // }
@@ -123,8 +117,8 @@ const ManagePatients = () => {
                   key={patient.id}
                 >
                   <Text>{patient.fullName}</Text>
-                </Box>
-              </EditPatientModal>
+                </Box> */}
+              </PatientModal>
             ))}
           </Stack>
         ) : (

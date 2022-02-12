@@ -11,25 +11,19 @@ import {
   ModalBody,
   ModalCloseButton,
   useToast,
+  Select,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Button } from "@chakra-ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-const EditPatientModal = ({
-  fetchPatients,
-  prevSex,
-  prevFullName,
-  prevAge,
-  prevOperation,
-  id,
-}) => {
+const EditPatientModal = ({ fetchPatients, patient }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [fullName, setFullName] = useState(prevFullName);
-  const [sex, setSex] = useState(prevSex);
-  const [age, setAge] = useState(prevAge);
-  const [operation, setOperation] = useState(prevOperation);
+  const [fullName, setFullName] = useState(patient.fullName);
+  const [sex, setSex] = useState(patient.sex);
+  const [age, setAge] = useState(patient.age);
+  const [operation, setOperation] = useState(patient.operation);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
 
@@ -53,7 +47,7 @@ const EditPatientModal = ({
         headers: { token: `Bearer ${user.accessToken}` },
       };
       const { data } = await axios.put(
-        `/api/patients/${id}`,
+        `/api/patients/${patient.id}`,
         {
           fullName,
           age,
@@ -86,12 +80,12 @@ const EditPatientModal = ({
 
   return (
     <>
-      <Button onClick={onOpen}>{prevFullName}</Button>
+      <Button onClick={onOpen}>EDIT</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Add a Patient</ModalHeader>
+          <ModalHeader>Edit Patient Information</ModalHeader>
           <ModalCloseButton />
           <ModalBody d="flex" flexDir="column" alignItems="center">
             <FormControl>
@@ -111,12 +105,13 @@ const EditPatientModal = ({
               />
             </FormControl>
             <FormControl>
-              Sex:
-              <Input
-                value={sex}
-                mb={1}
+              <Select
+                placeholder="Select sex"
                 onChange={(e) => setSex(e.target.value)}
-              />
+              >
+                <option value="F">F</option>
+                <option value="M">M</option>
+              </Select>
             </FormControl>
             <FormControl>
               Operation:
