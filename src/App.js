@@ -14,18 +14,23 @@ import {
 import Homepage from "./pages/Homepage";
 import "./App.css";
 import { useSelector } from "react-redux";
+import Patients from "./pages/Patients";
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
 
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Homepage />} exact />
-        {/* <Route
-          path="/chats"
-          element={user ? <Chat /> : <Navigate to="/" />}
+        <Route
+          path="/"
+          element={!user ? <Homepage /> : <Navigate to="/patients" />}
           exact
-        /> */}
+        />
+        <Route
+          path="/patients"
+          element={user ? <Patients /> : <Navigate to="/" />}
+          exact
+        />
       </Routes>
     </div>
   );
