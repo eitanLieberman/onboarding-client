@@ -22,6 +22,7 @@ const EditPatientModal = ({ fetchPatients, patient }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [fullName, setFullName] = useState(patient.fullName);
   const [sex, setSex] = useState(patient.sex);
+  const [nativeLanguage, setNativeLanguage] = useState(patient.nativeLanguage);
   const [age, setAge] = useState(patient.age);
   const [operation, setOperation] = useState(patient.operation);
   const [loading, setLoading] = useState(false);
@@ -46,12 +47,13 @@ const EditPatientModal = ({ fetchPatients, patient }) => {
       const config = {
         headers: { token: `Bearer ${user.accessToken}` },
       };
-      const { data } = await axios.put(
+      await axios.put(
         `/api/patients/${patient.id}`,
         {
           fullName,
           age,
           sex,
+          nativeLanguage,
           operation,
         },
         config
@@ -60,7 +62,7 @@ const EditPatientModal = ({ fetchPatients, patient }) => {
       await fetchPatients();
       onClose();
       toast({
-        title: "New patient added to database!",
+        title: "Edit was successful!",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -106,11 +108,24 @@ const EditPatientModal = ({ fetchPatients, patient }) => {
             </FormControl>
             <FormControl>
               <Select
+                value={sex}
                 placeholder="Select sex"
                 onChange={(e) => setSex(e.target.value)}
               >
                 <option value="F">F</option>
                 <option value="M">M</option>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <Select
+                value={nativeLanguage}
+                placeholder="Select patient's native language"
+                onChange={(e) => setNativeLanguage(e.target.value)}
+              >
+                <option value="Hebrew">Hebrew</option>
+                <option value="Arabic">Arabic</option>
+                <option value="English">English</option>
+                <option value="Russian">Russian</option>
               </Select>
             </FormControl>
             <FormControl>

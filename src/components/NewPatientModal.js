@@ -23,6 +23,7 @@ const NewPatientModal = ({ fetchPatients }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [fullName, setFullName] = useState();
   const [sex, setSex] = useState();
+  const [nativeLanguage, setNativeLanguage] = useState();
   const [age, setAge] = useState();
   const [operation, setOperation] = useState();
   const [loading, setLoading] = useState(false);
@@ -54,6 +55,7 @@ const NewPatientModal = ({ fetchPatients }) => {
           age,
           sex,
           operation,
+          nativeLanguage,
         },
         config
       );
@@ -111,11 +113,17 @@ const NewPatientModal = ({ fetchPatients }) => {
                 <option value="F">F</option>
                 <option value="M">M</option>
               </Select>
-              {/* <Input
-                placeholder="Male/Female"
-                mb={1}
-                onChange={(e) => setSex(e.target.value)}
-              /> */}
+            </FormControl>
+            <FormControl>
+              <Select
+                placeholder="Select patient's native language"
+                onChange={(e) => setNativeLanguage(e.target.value)}
+              >
+                <option value="Hebrew">Hebrew</option>
+                <option value="Arabic">Arabic</option>
+                <option value="English">English</option>
+                <option value="Russian">Russian</option>
+              </Select>
             </FormControl>
             <FormControl>
               <Input

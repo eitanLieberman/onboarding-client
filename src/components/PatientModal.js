@@ -24,10 +24,21 @@ const PatientModal = ({ fetchPatients, patient }) => {
   const toast = useToast();
 
   const user = useSelector((state) => state.user.currentUser);
-
+  const deleteHandler = async () => {
+    try {
+      const config = {
+        headers: { token: `Bearer ${user.accessToken}` },
+      };
+      await axios.delete(`/api/patients/${patient.id}`, config);
+      fetchPatients();
+      onClose();
+    } catch (err) {}
+  };
   return (
     <>
-      <Button onClick={onOpen}>{patient.fullName}</Button>
+      <Button onClick={onOpen}>
+        Name:{patient.fullName}, ID:{patient.id}
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -48,6 +59,10 @@ const PatientModal = ({ fetchPatients, patient }) => {
               {" " + patient.sex}
             </FormControl>
             <FormControl>
+              Native Language:
+              {" " + patient.nativeLanguage}
+            </FormControl>
+            <FormControl>
               Operation:
               {" " + patient.operation}
             </FormControl>
@@ -58,6 +73,9 @@ const PatientModal = ({ fetchPatients, patient }) => {
               {/* <Button onClick={onClose}></Button>
               EDIT */}
             </EditPatientModal>
+            <Button onClick={deleteHandler} _hover={{ bg: "red" }}>
+              delete
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
