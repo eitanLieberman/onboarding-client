@@ -15,7 +15,7 @@ function Homepage() {
   return (
     <Container maxW="xl" centerContent>
       <Box
-        // justifyContent="center"
+        justifyContent="center"
         d="flex"
         p={3}
         bg={"white"}
@@ -24,13 +24,7 @@ function Homepage() {
         borderRadius="1g"
         borderWidth="1px"
       >
-        <Button onClick={handleClick} style={{ float: "right" }}>
-          logout
-        </Button>
-        <Text
-          style={{ textAlign: "center", marginRight: "-50%" }}
-          fontSize="4xl"
-        >
+        <Text style={{ textAlign: "center" }} fontSize="4xl">
           On-Boarding
         </Text>
       </Box>

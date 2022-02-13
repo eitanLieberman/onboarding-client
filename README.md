@@ -10,10 +10,16 @@ compatible for both desktop and mobile, built with mobile as a priority.
 
 ## Installation
 
-run npm install
+1. run npm install
 
 ```bash
 npm install
+```
+
+2. run npm start on localhost(server repository should be running as well)
+
+```bash
+npm start
 ```
 
 ## Usage
