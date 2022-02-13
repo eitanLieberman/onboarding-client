@@ -87,7 +87,7 @@ const ManagePatients = () => {
       >
         <Menu>
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            ...
+            Actions
           </MenuButton>
           <MenuList>
             <NewPatientModal fetchPatients={fetchPatients}>
