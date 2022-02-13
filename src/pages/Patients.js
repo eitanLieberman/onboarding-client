@@ -6,7 +6,7 @@ const Patients = () => {
   return (
     <>
       <div style={{ width: "100%" }}>
-        <Box d="flex" justifyContent="space-between" w="100%" h="90vh" p="10px">
+        <Box d="flex" justifyContent="center" w="100%" h="90vh" p="10px">
           <ManagePatients />
         </Box>
       </div>

@@ -83,7 +83,7 @@ const NewPatientModal = ({ fetchPatients }) => {
 
   return (
     <>
-      <Button onClick={onOpen}>+ Add Patient</Button>
+      <Button onClick={onOpen}>+ Patient</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

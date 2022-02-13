@@ -61,7 +61,7 @@ const ManagePatients = () => {
       alignItems="center"
       p={3}
       bg="white"
-      w={{ base: "100%", md: "31%" }}
+      w={{ base: "100%", md: "44%" }}
       borderRadius="lg"
       borderWidth="1px"
     >
@@ -75,9 +75,7 @@ const ManagePatients = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Button onClick={handleClick} style={{ float: "left" }}>
-          logout
-        </Button>
+        <Button onClick={handleClick}>logout</Button>
         Patients
         <NewPatientModal fetchPatients={fetchPatients}>
           <Button
@@ -85,7 +83,7 @@ const ManagePatients = () => {
             fontSize={{ base: "10px", md: "8px", lg: "10px" }}
             rightIcon={<AddIcon />}
           >
-            New Patient
+            <Text align={"center"}> New Patient</Text>
           </Button>
         </NewPatientModal>
       </Box>
