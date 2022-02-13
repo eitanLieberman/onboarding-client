@@ -41,7 +41,7 @@ const Signup = () => {
       <FormControl id="name" isRequired>
         <FormLabel>Doctor ID</FormLabel>
         <Input
-          placeholder="IDs for testing: doc1 , doc2,...,doc5"
+          placeholder="IDs for testing: doc2 ,doc3,...,doc5"
           onChange={(e) => {
             setDocId(e.target.value);
           }}
