@@ -32,6 +32,13 @@ const PatientModal = ({ fetchPatients, patient }) => {
       await axios.delete(`/api/patients/${patient.id}`, config);
       fetchPatients();
       onClose();
+      toast({
+        title: "Deletion was successful",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
     } catch (err) {}
   };
   return (
@@ -69,11 +76,14 @@ const PatientModal = ({ fetchPatients, patient }) => {
           </ModalBody>
 
           <ModalFooter>
-            <EditPatientModal patient={patient} fetchPatients={fetchPatients}>
-              {/* <Button onClick={onClose}></Button>
-              EDIT */}
-            </EditPatientModal>
-            <Button onClick={deleteHandler} _hover={{ bg: "red" }}>
+            <EditPatientModal
+              patient={patient}
+              fetchPatients={fetchPatients}
+            ></EditPatientModal>
+            <Button onClick={onClose} bg="teal.400" _hover={{ bg: "teal" }}>
+              Confirm
+            </Button>
+            <Button onClick={deleteHandler} bg="red.400" _hover={{ bg: "red" }}>
               delete
             </Button>
           </ModalFooter>

@@ -2,7 +2,7 @@ import { Container } from "@chakra-ui/layout";
 import { TabList, Tabs, Tab, TabPanel, TabPanels } from "@chakra-ui/tabs";
 import { Box, Button, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
-import "./homepage.css";
+// import "./homepage.css";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
 import { logoutUser } from "../redux/apiCalls";

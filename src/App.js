@@ -12,7 +12,7 @@ import {
   Routes,
 } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-import "./App.css";
+
 import { useSelector } from "react-redux";
 import Patients from "./pages/Patients";
 const App = () => {

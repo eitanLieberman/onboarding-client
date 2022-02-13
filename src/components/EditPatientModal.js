@@ -82,7 +82,15 @@ const EditPatientModal = ({ fetchPatients, patient }) => {
 
   return (
     <>
-      <Button onClick={onOpen}>EDIT</Button>
+      <Button
+        onClick={onOpen}
+        style={{
+          left: "10px",
+          position: "absolute",
+        }}
+      >
+        Edit Details
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
