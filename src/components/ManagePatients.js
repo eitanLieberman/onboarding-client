@@ -1,7 +1,16 @@
-import { AddIcon } from "@chakra-ui/icons";
+import { AddIcon, ChevronDownIcon } from "@chakra-ui/icons";
 
 import { Box, Stack, Text } from "@chakra-ui/layout";
-
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+} from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
@@ -12,6 +21,7 @@ import { logoutUser } from "../redux/apiCalls";
 import NewPatientModal from "./NewPatientModal";
 import EditPatientModal from "./EditPatientModal";
 import PatientModal from "./PatientModal";
+import SearchModal from "./SearchModal";
 
 // import GroupChatModal from "./GroupChatModal";
 
@@ -75,7 +85,23 @@ const ManagePatients = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Button onClick={handleClick}>logout</Button>
+        <Menu>
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            ...
+          </MenuButton>
+          <MenuList>
+            <NewPatientModal fetchPatients={fetchPatients}>
+              <MenuItem></MenuItem>
+            </NewPatientModal>
+            <MenuDivider />
+            <SearchModal fetchPatients={fetchPatients}>
+              <MenuItem></MenuItem>
+            </SearchModal>
+            <MenuDivider />
+            <Button onClick={handleClick}>Logout</Button>
+          </MenuList>
+        </Menu>
+        {/* <Button onClick={handleClick}>logout</Button> */}
         Patients
         <NewPatientModal fetchPatients={fetchPatients}>
           <Button
@@ -100,23 +126,11 @@ const ManagePatients = () => {
         {patients ? (
           <Stack overflowY="scroll">
             {patients.map((patient) => (
-              <PatientModal patient={patient} fetchPatients={fetchPatients}>
-                {/* <Box
-                  // onClick={
-
-                  // }
-                  _hover={{ bg: "teal" }}
-                  cursor="pointer"
-                  bg={"#E8E8E8"}
-                  color={"black"}
-                  px={3}
-                  py={2}
-                  borderRadius="lg"
-                  key={patient.id}
-                >
-                  <Text>{patient.fullName}</Text>
-                </Box> */}
-              </PatientModal>
+              <PatientModal
+                patient={patient}
+                fetchPatients={fetchPatients}
+                key={patient.id}
+              ></PatientModal>
             ))}
           </Stack>
         ) : (

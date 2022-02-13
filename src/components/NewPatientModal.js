@@ -13,11 +13,13 @@ import {
   ModalCloseButton,
   useToast,
   Select,
+  MenuItem,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Button } from "@chakra-ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { Search2Icon } from "@chakra-ui/icons";
 
 const NewPatientModal = ({ fetchPatients }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -83,7 +85,9 @@ const NewPatientModal = ({ fetchPatients }) => {
 
   return (
     <>
-      <Button onClick={onOpen}>+ Patient</Button>
+      <Button  onClick={onOpen}>
+        Add Patient
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
